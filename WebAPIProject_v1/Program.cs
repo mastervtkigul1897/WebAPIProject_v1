@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using WebAPIProject_v1.Models;
+using WebAPIProject_v1.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,13 +16,13 @@ builder.Services.AddSwaggerGen();
 
 // Database Connection
 var rohanuser = builder.Configuration.GetConnectionString("RohanUser");
-builder.Services.AddDbContextPool<RohanUserContext>(options => options.UseSqlServer(rohanuser));
+builder.Services.AddDbContext<RohanUserContext>(options => options.UseSqlServer(rohanuser));
 
 var rohangame = builder.Configuration.GetConnectionString("RohanGame");
-builder.Services.AddDbContextPool<RohanGameContext>(options => options.UseSqlServer(rohangame));
+builder.Services.AddDbContext<RohanGameContext>(options => options.UseSqlServer(rohangame));
 
 var rohanweb = builder.Configuration.GetConnectionString("RohanWeb");
-builder.Services.AddDbContextPool<RohanWebContext>(options => options.UseSqlServer(rohanweb));
+builder.Services.AddDbContext<RohanWebContext>(options => options.UseSqlServer(rohanweb));
 
 // Authorization Middleware
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
