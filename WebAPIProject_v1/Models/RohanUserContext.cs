@@ -16,7 +16,6 @@ public partial class RohanUserContext : DbContext
     }
 
     public virtual DbSet<Tuser> Tusers { get; set; }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.UseCollation("Thai_CI_AS");
